@@ -1,0 +1,10 @@
+#!/system/bin/sh
+
+bbox=/sbin/busybox
+
+$bbox mount -o rw,remount /system 
+$bbox swapoff /dev/block/zram0
+$bbox echo 1 > /sys/dev/block/253:0/reset
+$bbox echo 78086160 > /sys/dev/block/253:0/disksize
+$bbox mkswap /dev/block/zram0 &> /dev/null
+$bbox swapon /dev/block/zram0 &> /dev/null

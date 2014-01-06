@@ -1,0 +1,26 @@
+#!/system/bin/sh
+
+bbox=/sbin/busybox
+swlist=/sys/module/lowmemorykiller/parameters/whitelist
+sblist=/sys/module/lowmemorykiller/parameters/blacklist
+sdlist=/sys/module/lowmemorykiller/parameters/darklist
+keyb=/sys/module/lowmemorykiller/parameters/keyboard
+whitelist=/system/etc/Badass/whitelist
+blacklist=/system/etc/Badass/blacklist
+darklist=/system/etc/Badass/darklist
+keyboard=/system/etc/Badass/keyboard
+
+sleep 10;
+
+if [ -e $whitelist ];
+    then $bbox cat $whitelist > $swlist;
+fi;
+
+if [ -e $blacklist ];
+    then $bbox cat $blacklist > $sblist;
+fi;
+
+if [ -e $darklist ];
+    then $bbox cat $darklist > $sdlist;
+fi;
+

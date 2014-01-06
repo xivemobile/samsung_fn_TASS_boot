@@ -1,0 +1,12 @@
+#!/system/bin/sh
+
+bbox=/sbin/busybox
+
+$bbox chmod 644 /dev/frandom
+$bbox chmod 644 /dev/erandom
+$bbox chmod 644 /dev/urandom
+$bbox chmod 644 /dev/random
+
+$bbox rm /dev/random && $bbox ln /dev/frandom /dev/random
+$bbox rm /dev/urandom && $bbox ln /dev/erandom /dev/urandom
+
